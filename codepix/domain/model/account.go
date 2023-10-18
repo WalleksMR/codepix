@@ -16,9 +16,9 @@ type Account struct {
 	Base      `valid:"required"`
 	OwnerName string    `json:"owner_name" gorm:"column:owner_name;type:varchar(255);not null" valid:"notnull"`
 	Bank      *Bank     `valid:"-"`
-	BankID    string    `gorm:"column:bank_id;type:uuid;not null" valid:"-"`
+	BankID    string    `gorm:"column:bank_id;type:uuid;not null" valid:"-"` // Para ORM identificar o relacionamento
 	Number    string    `json:"number" gorm:"type:varchar(20)" valid:"notnull"`
-	PixKeys   []*PixKey `gorm:"ForeignKey:AccountID" valid:"-"`
+	PixKeys   []*PixKey `gorm:"ForeignKey:AccountID" valid:"-"` // essa account esta relacionado com pix key
 }
 
 // Account validation method
